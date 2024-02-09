@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>FPGA随笔 | Papillon's electroic brain</title><meta name="author" content="Papillon"><meta name="copyright" content="Papillon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="FGPA整体过程编写 Verilog (.v) 文件：使用 Verilog 或其他支持的硬件描述语言编写您的 FPGA 设计代码。Verilog 文件描述了电路的行为和结构。编写 Constraint (.cst) 文件：编写约束文件，也称为约束条件文件。该文件描述了时序、引脚分配、时钟频率等约束条件，以确保设计在 FPGA 上正确运行。综合：使用综合工具，如 Yosys，将 Verilog 代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FPGA随笔">
+<meta property="og:url" content="http://example.com/2024/02/09/FPGA/index.html">
+<meta property="og:site_name" content="Papillon&#39;s electroic brain">
+<meta property="og:description" content="FGPA整体过程编写 Verilog (.v) 文件：使用 Verilog 或其他支持的硬件描述语言编写您的 FPGA 设计代码。Verilog 文件描述了电路的行为和结构。编写 Constraint (.cst) 文件：编写约束文件，也称为约束条件文件。该文件描述了时序、引脚分配、时钟频率等约束条件，以确保设计在 FPGA 上正确运行。综合：使用综合工具，如 Yosys，将 Verilog 代码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/image1.png">
+<meta property="article:published_time" content="2024-02-09T08:46:50.000Z">
+<meta property="article:modified_time" content="2024-02-09T10:05:13.352Z">
+<meta property="article:author" content="Papillon">
+<meta property="article:tag" content="FPGA">
+<meta property="article:tag" content="Verilog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/image1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/02/09/FPGA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FPGA随笔',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-09 18:05:13'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/image1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/red_ball.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Papillon's electroic brain"><span class="site-name">Papillon's electroic brain</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">FPGA随笔</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-09T08:46:50.000Z" title="发表于 2024-02-09 16:46:50">2024-02-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-09T10:05:13.352Z" title="更新于 2024-02-09 18:05:13">2024-02-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/FPGA/">FPGA</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/FPGA/gowin/">gowin</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="FPGA随笔"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="FGPA"><a href="#FGPA" class="headerlink" title="FGPA"></a>FGPA</h1><h2 id="整体过程"><a href="#整体过程" class="headerlink" title="整体过程"></a>整体过程</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">编写 Verilog (.v) 文件：</span><br><span class="line"></span><br><span class="line">使用 Verilog 或其他支持的硬件描述语言编写您的 FPGA 设计代码。Verilog 文件描述了电路的行为和结构。</span><br><span class="line">编写 Constraint (.cst) 文件：</span><br><span class="line"></span><br><span class="line">编写约束文件，也称为约束条件文件。该文件描述了时序、引脚分配、时钟频率等约束条件，以确保设计在 FPGA 上正确运行。</span><br><span class="line">综合：</span><br><span class="line"></span><br><span class="line">使用综合工具，如 Yosys，将 Verilog 代码转换为逻辑网表。综合工具将分析和优化设计，并生成逻辑网表文件。</span><br><span class="line">实现：</span><br><span class="line"></span><br><span class="line">使用物理设计工具（例如 nextpnr, Vivado、Quartus Prime、iCEcube2 等），将逻辑网表映射到目标 FPGA 设备的物理资源上。该步骤包括布局（将逻辑元件放置在 FPGA 芯片上的位置）和布线（将逻辑元件之间的连线连接起来）。</span><br><span class="line">生成 Bitstream 文件：</span><br><span class="line"></span><br><span class="line">在实现步骤完成后，生成 FPGA 设备可识别的 Bitstream 文件。Bitstream 文件包含了将设计配置到 FPGA 芯片上所需的详细信息，例如逻辑元件的位置、连线信息和时钟设置。</span><br><span class="line">配置 FPGA 开发板：</span><br><span class="line"></span><br><span class="line">将生成的 Bitstream 文件加载到 FPGA 开发板上。这通常需要使用特定的软件工具或命令行工具，例如 Vivado Hardware Manager、Quartus Programmer 或 openFPGALoader。</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="veirlog语言"><a href="#veirlog语言" class="headerlink" title="veirlog语言"></a>veirlog语言</h1><p>input&#x2F;output 参数默认是wire类型。<br>wire : 组合逻辑，不涉及时序，当电路变化时，跟着变化<br>reg : 用于时序逻辑，当电路变化时，要等到下一个时钟才变化。<br>所以 assign 赋值要比在always中赋值快一个周期。</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="yosys-综合工具。"><a href="#yosys-综合工具。" class="headerlink" title="yosys: 综合工具。"></a>yosys: 综合工具。</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet"> 1.</span> 启动 Yosys：</span><br><span class="line"><span class="bullet"> -</span> 在命令行中输入 <span class="code">`yosys`</span> 命令来启动 Yosys 工具。</span><br><span class="line"></span><br><span class="line"><span class="bullet"> 2.</span> 导入设计文件：</span><br><span class="line"></span><br><span class="line"><span class="bullet">   -</span> 在 Yosys 提示符下，使用</span><br><span class="line"><span class="code">     read_verilog</span></span><br><span class="line"><span class="code">     命令导入设计文件：</span></span><br><span class="line"><span class="code">     复制</span></span><br><span class="line"><span class="code">     yosys&gt; read_verilog design.v</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">3.</span> 综合设计：</span><br><span class="line"></span><br><span class="line"><span class="bullet">   -</span> 使用</span><br><span class="line"><span class="code">     synth</span></span><br><span class="line"><span class="code">     命令对设计进行综合：</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">     复制</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">     yosys&gt; synth &lt;synthesis_command&gt;</span></span><br><span class="line"><span class="code">     &lt;synthesis_command&gt;</span></span><br><span class="line"><span class="code">     表示您选择的综合命令。Yosys 支持不同的综合命令，如</span></span><br><span class="line"><span class="code">     synth_ice40</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">     （针对 Lattice iCE40 FPGA）或</span></span><br><span class="line"><span class="code">     synth_xilinx</span></span><br><span class="line"><span class="code">     （针对 Xilinx FPGA）。您可以根据目标 FPGA 平台选择适当的综合命令。</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">4.</span> 查看综合结果：</span><br><span class="line"><span class="bullet">   -</span> 使用</span><br><span class="line"><span class="code">     show</span></span><br><span class="line"><span class="code">     命令查看综合后的设计：</span></span><br><span class="line"><span class="code">     复制</span></span><br><span class="line"><span class="code">     yosys&gt; show</span></span><br><span class="line"><span class="code">     这将显示综合生成的逻辑网表。</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">5.</span> 导出网表：</span><br><span class="line"><span class="bullet">   -</span> 使用</span><br><span class="line"><span class="code">     write_verilog</span></span><br><span class="line"><span class="code">     命令将综合后的逻辑网表导出为 Verilog 文件：</span></span><br><span class="line"><span class="code">     复制</span></span><br><span class="line"><span class="code">     yosys&gt; write_verilog synthesized.v</span></span><br><span class="line"><span class="code">     这将生成一个名为synthesized.v的文件，其中包含综合后的逻辑网表。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="nextpnr-gowin-实现工具"><a href="#nextpnr-gowin-实现工具" class="headerlink" title="nextpnr-gowin: 实现工具"></a>nextpnr-gowin: 实现工具</h3><h3 id="openFPGALoader-烧录工具。"><a href="#openFPGALoader-烧录工具。" class="headerlink" title="openFPGALoader: 烧录工具。"></a>openFPGALoader: 烧录工具。</h3><h1 id="高云IDE启动过程"><a href="#高云IDE启动过程" class="headerlink" title="高云IDE启动过程"></a>高云IDE启动过程</h1><blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">LD_PRELOAD=/usr/lib/libfreetype.so /opt/Gowin_V1.9/IDE/bin/gw_ide</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="使用vscode开发环境"><a href="#使用vscode开发环境" class="headerlink" title="使用vscode开发环境"></a>使用vscode开发环境</h1><blockquote>
+<p>OSS CAD Suite –&gt; Lushay Code(vscode插件) -&gt; 右下角 fpga toolchain</p>
+<p>Verilog-HDL 语法高亮</p>
+</blockquote>
+<h1 id="iverilog-仿真"><a href="#iverilog-仿真" class="headerlink" title="iverilog 仿真"></a>iverilog 仿真</h1><ol>
+<li>iverilog -o wave led_demo_tb.v led_demo.v</li>
+<li>vvp -n wave -lxt2</li>
+<li>gtkwave wave.vcdv</li>
+</ol>
+<h1 id="IP核"><a href="#IP核" class="headerlink" title="IP核"></a>IP核</h1><h2 id="CMT-clock-manager-tiles"><a href="#CMT-clock-manager-tiles" class="headerlink" title="CMT clock manager tiles"></a>CMT clock manager tiles</h2><p>1个CMT包含一个MMCM和1个PLL。</p>
+<h3 id="MMCM"><a href="#MMCM" class="headerlink" title="MMCM"></a>MMCM</h3><h3 id="PPL锁相环"><a href="#PPL锁相环" class="headerlink" title="PPL锁相环"></a>PPL锁相环</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">	A[ ] --&gt; |F_in| B(N)</span><br><span class="line">	B --&gt; |F_ref| C[PFD]</span><br><span class="line">	C --&gt; D[Charge Pump / Loop Filter &amp;VCO]</span><br><span class="line">	D --&gt; J[F_vco]</span><br><span class="line">	J --&gt; |M| C</span><br><span class="line">	J --&gt; E[K]</span><br><span class="line">	E --&gt; F[F_out1]</span><br><span class="line">	E --&gt; G[F_out1]</span><br><span class="line">	J --&gt; H[V]</span><br><span class="line">	H --&gt; I[F_out2]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>N：前置分频计数器<br>PFD：相位频率检测器<br>Charge Pump：电荷泵<br>Loop Filter：环路滤波器<br>VCO：压控振荡器<br>M：反馈乘法器<br>K,V：后置分频器</p>
+<h4 id="电路原理介绍："><a href="#电路原理介绍：" class="headerlink" title="电路原理介绍："></a>电路原理介绍：</h4><pre><code>首先Fin输入时钟，进入N预分频单元，出来的是FREF参考时钟，进入PFD频率相位检测电路，检测VCO反馈回来的时钟信号与参考时钟进行比较，然后将比较结果送入Charge，能得到一个电压信号，电压信号经过一个环路滤波器后，就是一个比较稳定的电压信号，这电压信号再来控制VCO压控振荡器，从来产生一个时钟信号Fvco，再次经过M的一个倍频，输入到PFD，这里就是一个环路反馈，不断调整达到一个平衡。当PFD=M就稳定下来，稳定下来之前需要一定时间。
+</code></pre>
+<h2 id="单端口RAM"><a href="#单端口RAM" class="headerlink" title="单端口RAM"></a>单端口RAM</h2><p>输入只有一组数据线和一组地址线，只有一个时钟，读写共用地址线。</p>
+<p>输出只有一个端口</p>
+<p>所以单端口RAM读写操作不能同时进行</p>
+<h2 id="伪双端口RAM"><a href="#伪双端口RAM" class="headerlink" title="伪双端口RAM"></a>伪双端口RAM</h2><p>输入只有一组数据线，两组地址线，两个时钟。</p>
+<p>两个输出端口共用输出端口</p>
+<p>所以一个端口只读，另一个端口只写，但写入和读取时钟可以不同，且位宽比可以不是1:1，即同时写A与读B可以速率不同。</p>
+<h2 id="双端口RAM"><a href="#双端口RAM" class="headerlink" title="双端口RAM"></a>双端口RAM</h2><p>输入有两组地址线和两组数据线，两个时钟。</p>
+<p>输出有两个分别的数据线</p>
+<p>所以双端口RAM两个端口都可以分别读写，彼此互不干扰</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Papillon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/02/09/FPGA/">http://example.com/2024/02/09/FPGA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Papillon's electroic brain</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/FPGA/">FPGA</a><a class="post-meta__tags" href="/tags/Verilog/">Verilog</a></div><div class="post_share"><div class="social-share" data-image="/img/image1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/09/ArchLinux/" title="Linux常用操作"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux常用操作</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/09/STM32/" title="STM32笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">STM32笔记</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/image1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Papillon</div><div class="author-info__description">Keep learning and keep new</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Ruomio" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:p1065940593@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FGPA"><span class="toc-number">1.</span> <span class="toc-text">FGPA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">整体过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#veirlog%E8%AF%AD%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">veirlog语言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#yosys-%E7%BB%BC%E5%90%88%E5%B7%A5%E5%85%B7%E3%80%82"><span class="toc-number">2.1.1.</span> <span class="toc-text">yosys: 综合工具。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nextpnr-gowin-%E5%AE%9E%E7%8E%B0%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.2.</span> <span class="toc-text">nextpnr-gowin: 实现工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#openFPGALoader-%E7%83%A7%E5%BD%95%E5%B7%A5%E5%85%B7%E3%80%82"><span class="toc-number">2.1.3.</span> <span class="toc-text">openFPGALoader: 烧录工具。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E4%BA%91IDE%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">高云IDE启动过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8vscode%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text">使用vscode开发环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#iverilog-%E4%BB%BF%E7%9C%9F"><span class="toc-number">5.</span> <span class="toc-text">iverilog 仿真</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IP%E6%A0%B8"><span class="toc-number">6.</span> <span class="toc-text">IP核</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CMT-clock-manager-tiles"><span class="toc-number">6.1.</span> <span class="toc-text">CMT clock manager tiles</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MMCM"><span class="toc-number">6.1.1.</span> <span class="toc-text">MMCM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PPL%E9%94%81%E7%9B%B8%E7%8E%AF"><span class="toc-number">6.1.2.</span> <span class="toc-text">PPL锁相环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="toc-number">6.1.2.1.</span> <span class="toc-text">电路原理介绍：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%AB%AF%E5%8F%A3RAM"><span class="toc-number">6.2.</span> <span class="toc-text">单端口RAM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E5%8F%8C%E7%AB%AF%E5%8F%A3RAM"><span class="toc-number">6.3.</span> <span class="toc-text">伪双端口RAM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E7%AB%AF%E5%8F%A3RAM"><span class="toc-number">6.4.</span> <span class="toc-text">双端口RAM</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/09/ArchLinux/" title="Linux常用操作">Linux常用操作</a><time datetime="2024-02-09T08:46:50.000Z" title="发表于 2024-02-09 16:46:50">2024-02-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/09/FPGA/" title="FPGA随笔">FPGA随笔</a><time datetime="2024-02-09T08:46:50.000Z" title="发表于 2024-02-09 16:46:50">2024-02-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/09/STM32/" title="STM32笔记">STM32笔记</a><time datetime="2024-02-09T08:46:50.000Z" title="发表于 2024-02-09 16:46:50">2024-02-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Papillon</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div></div></body></html>
