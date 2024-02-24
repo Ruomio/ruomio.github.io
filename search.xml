@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>docker_deploy_mariadb_mysql</title>
+      <link href="/2024/02/24/docker-deploy-mariadb-mysql/"/>
+      <url>/2024/02/24/docker-deploy-mariadb-mysql/</url>
+      
+        <content type="html"><![CDATA[<h1 id="docker-配置MariaDB"><a href="#docker-配置MariaDB" class="headerlink" title="docker 配置MariaDB"></a>docker 配置MariaDB</h1><ol><li><p>拉取mariadb&#x2F;mysql docker 镜像</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull mariadb</span><br></pre></td></tr></table></figure></li><li><p>启动容器</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -d --name mariadb -p 3306:3306 -e TZ=&quot;Asia/Shanghai&quot;  -e MYSQL_ROOT_PASSWORD=&#x27;your_password&#x27; -e MARIADB_PASSWORD=&#x27;your_password&#x27;  mariadb</span><br></pre></td></tr></table></figure></li><li><p>设置远程连接权限</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">a. 进入容器</span></span><br><span class="line">docker exec -it mariadb /bin/bash </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">b. 授权</span></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;your_password&#x27;;</span><br></pre></td></tr></table></figure></li></ol><h1 id="c-刷新权限"><a href="#c-刷新权限" class="headerlink" title="c. 刷新权限"></a>c. 刷新权限</h1><p>flush privileges;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">4. 重启容器</span><br><span class="line">```shell </span><br><span class="line">docker restart mariadb</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mysql </tag>
+            
+            <tag> mariadb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>前后端问题</title>
       <link href="/2024/02/20/%E5%89%8D%E7%AB%AF%E4%B8%8E%E5%90%8E%E7%AB%AF/"/>
       <url>/2024/02/20/%E5%89%8D%E7%AB%AF%E4%B8%8E%E5%90%8E%E7%AB%AF/</url>
