@@ -8,9 +8,25 @@
       <link href="/2024/03/05/door-lock/"/>
       <url>/2024/03/05/door-lock/</url>
       
-        <content type="html"><![CDATA[<h1 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h1><p><img src="/pic/flow.png" alt="flow"></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在消费升级渗透在各个领域的今天，国民消费发生着巨大的变化，与每个人息息相关的家居行业也是如此。现今，越来越多的智能家居产品出现在普通老百姓的生活中，智能照明、智能窗帘、智能扫地机器人等各种智能产品都给人们的生活带来了极大的便利。智能门锁作为智能家居中重要的一环，也成为消费者家居智能化的重要选择。智能相比市面的机械门锁更加安全、更智能、更人性化而得到市场的认可，在智能门锁行业里，不少世界500强企业也在智能门锁上进行产品布局，像中国小米公司就生产智能门锁，致力打造智慧家庭，市场智能门锁能够支持五种解锁方式，支持指纹、手机、门禁门、按键密码、钥匙解锁功能。可以说是智能家庭必不可少的成员。</p><h1 id="项目所用到的主要技术"><a href="#项目所用到的主要技术" class="headerlink" title="项目所用到的主要技术"></a>项目所用到的主要技术</h1><ol><li>UART串口协议</li><li>MQTT网络协议</li><li>PWM控制舵机</li><li>Spring-boot,VUE</li></ol><h1 id="元器件-暂定-时间允许情况下，重新设计PCB打板集成"><a href="#元器件-暂定-时间允许情况下，重新设计PCB打板集成" class="headerlink" title="元器件(暂定,时间允许情况下，重新设计PCB打板集成)"></a>元器件(暂定,时间允许情况下，重新设计PCB打板集成)</h1><ol><li>STM32</li><li>ESP8266</li><li>舵机</li><li>TTL转串口</li></ol><h1 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h1><p><img src="/pic/flow.png" alt="flow"></p><h1 id="可能附加功能"><a href="#可能附加功能" class="headerlink" title="可能附加功能"></a>可能附加功能</h1><ol><li>指纹模块</li><li>NFC模块</li><li>密码模块</li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> STM32 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> stm32 </tag>
+            
+            <tag> MQTT </tag>
+            
+            <tag> ESP8266 </tag>
+            
+        </tags>
       
     </entry>
     
