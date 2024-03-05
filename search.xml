@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>door_lock</title>
+      <link href="/2024/03/05/door-lock/"/>
+      <url>/2024/03/05/door-lock/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h1><p><img src="/pic/flow.png" alt="flow"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>docker_deploy_mariadb_mysql</title>
       <link href="/2024/02/24/docker-deploy-mariadb-mysql/"/>
       <url>/2024/02/24/docker-deploy-mariadb-mysql/</url>
