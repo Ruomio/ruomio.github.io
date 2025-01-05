@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>ysyx_report_20250105</title>
+      <link href="/2025/01/05/ysyx-report-20250105/"/>
+      <url>/2025/01/05/ysyx-report-20250105/</url>
+      
+        <content type="html"><![CDATA[<h1 id="ysyx分享-汇报"><a href="#ysyx分享-汇报" class="headerlink" title="ysyx分享&#x2F;汇报"></a>ysyx分享&#x2F;汇报</h1><p>内蒙古大学-彭培智</p><p>ysyx_24080025</p><p>B阶段</p><p>2025-01-05</p><h1 id="近期进展"><a href="#近期进展" class="headerlink" title="近期进展"></a>近期进展</h1><ol><li>UART 正确初始化</li><li>xip flash读取</li><li>psram 读写</li><li>QPI模式</li></ol><h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><ol><li>可以运行所有cpu-tests, 但是运行rtt时提示编译出的文件大小一异常，通过readelf 工具查看发现从data段开始偏移量错误。</li></ol><h1 id="接下来的进度"><a href="#接下来的进度" class="headerlink" title="接下来的进度"></a>接下来的进度</h1><p>bootloader 二级加载过程</p><h1 id="DONE"><a href="#DONE" class="headerlink" title="DONE"></a>DONE</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> ysyx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+            <tag> verilog </tag>
+            
+            <tag> riscv32 </tag>
+            
+            <tag> makefile </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ysyx_report_20241222</title>
       <link href="/2024/12/22/ysyx-report-20241222/"/>
       <url>/2024/12/22/ysyx-report-20241222/</url>
