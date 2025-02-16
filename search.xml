@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>ysyx_report_20250216</title>
+      <link href="/2025/02/16/ysyx-report-20250216/"/>
+      <url>/2025/02/16/ysyx-report-20250216/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一生一芯组会汇报-分享"><a href="#一生一芯组会汇报-分享" class="headerlink" title="一生一芯组会汇报&#x2F;分享"></a>一生一芯组会汇报&#x2F;分享</h1><p>内蒙古大学-彭培智</p><p>ysyx_24080020</p><p>B阶段</p><p>2025.02.16</p><h1 id="近期进展"><a href="#近期进展" class="headerlink" title="近期进展"></a>近期进展</h1><ol><li>sdram 实现</li><li>sdram 位扩展</li><li>sdran 字扩展</li><li>移植lightsss</li></ol><h1 id="卡了一段bug"><a href="#卡了一段bug" class="headerlink" title="卡了一段bug"></a>卡了一段bug</h1><ol><li>sdram的每个bank的active row各自独立，刚开始只保存了一个active row, 导致读写失败（控制器代码对于已保存的active row 不会先active 而是直接read&#x2F;write）</li></ol><h1 id="接下来的任务"><a href="#接下来的任务" class="headerlink" title="接下来的任务"></a>接下来的任务</h1><p>接入更多的外设，即接入nvboard</p><h1 id="DONE"><a href="#DONE" class="headerlink" title="DONE"></a>DONE</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> ysyx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+            <tag> verilog </tag>
+            
+            <tag> riscv32 </tag>
+            
+            <tag> makefile </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ysyx_report_20250105</title>
       <link href="/2025/01/05/ysyx-report-20250105/"/>
       <url>/2025/01/05/ysyx-report-20250105/</url>
