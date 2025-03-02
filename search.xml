@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>ysyx_report_20250302</title>
+      <link href="/2025/03/02/ysyx-report-20250302/"/>
+      <url>/2025/03/02/ysyx-report-20250302/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一生一芯组会汇报-分享"><a href="#一生一芯组会汇报-分享" class="headerlink" title="一生一芯组会汇报&#x2F;分享"></a>一生一芯组会汇报&#x2F;分享</h1><p>内蒙古大学-彭培智</p><p>ysyx_24080020</p><p>B阶段</p><p>2025.03.02</p><h1 id="近期进展"><a href="#近期进展" class="headerlink" title="近期进展"></a>近期进展</h1><ol><li>接入nvboard gpio</li><li>lightsss 改bug，assert失败或者ctrl c 终止时，子进程无法正常退出，造成内存泄漏；新增信号处理函数，支持assert失败时也保存波形。</li></ol><h1 id="卡了一段bug"><a href="#卡了一段bug" class="headerlink" title="卡了一段bug"></a>卡了一段bug</h1><ol><li>nvboard uart 试了很多办法都无法正常打印（打印乱码）<br> 思路：<br> – 计算仿真频率， 8000 insts &#x2F; s， 每条指令 36 时钟周期， 故仿真频率 288KHz，以此设置nvboard除数： 不正确<br> – 查波形，nvboard在每条指令执行后更新，查看tx信号引脚，发现14条指令后结束一字节的发送并发送停止位，到第21条指令后开始下一字节的发送，但是将nvboard的除数设置为14 or 21 也均不对， 目前卡在了这里，想问下大家思路。</li></ol><h1 id="接下来的任务"><a href="#接下来的任务" class="headerlink" title="接下来的任务"></a>接下来的任务</h1><p>通过nvboard测试串口输入功能</p><h1 id="DONE"><a href="#DONE" class="headerlink" title="DONE"></a>DONE</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> ysyx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+            <tag> verilog </tag>
+            
+            <tag> riscv32 </tag>
+            
+            <tag> makefile </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ysyx_report_20250216</title>
       <link href="/2025/02/16/ysyx-report-20250216/"/>
       <url>/2025/02/16/ysyx-report-20250216/</url>
