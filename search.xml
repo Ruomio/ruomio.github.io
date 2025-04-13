@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>ysyx_report_20250413</title>
+      <link href="/2025/04/13/ysyx-report-20250413/"/>
+      <url>/2025/04/13/ysyx-report-20250413/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一生一芯组会汇报-分享"><a href="#一生一芯组会汇报-分享" class="headerlink" title="一生一芯组会汇报&#x2F;分享"></a>一生一芯组会汇报&#x2F;分享</h1><p>内蒙古大学-彭培智</p><p>ysyx_24080020</p><p>B阶段</p><p>2025.04.13</p><h1 id="近期进展"><a href="#近期进展" class="headerlink" title="近期进展"></a>近期进展</h1><ol><li>实现cachesim，通过测试脚本批量测试，并图形化展示结果</li><li>使用cachesim进行设计空间探索</li><li>支持更大的块（1） 和 （2）</li><li>集成axi接口的sdram控制器</li><li>将icache支持突发传输，并将icache从ifu迁移到xbar和soc之间</li></ol><h1 id="卡了一段bug"><a href="#卡了一段bug" class="headerlink" title="卡了一段bug"></a>卡了一段bug</h1><ol><li>无</li></ol><h1 id="接下来的任务"><a href="#接下来的任务" class="headerlink" title="接下来的任务"></a>接下来的任务</h1><p>实现AXI的延迟模块</p><h1 id="DONE"><a href="#DONE" class="headerlink" title="DONE"></a>DONE</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> ysyx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+            <tag> verilog </tag>
+            
+            <tag> riscv32 </tag>
+            
+            <tag> makefile </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ysyx_report_20250330</title>
       <link href="/2025/03/30/ysyx-report-20250330/"/>
       <url>/2025/03/30/ysyx-report-20250330/</url>
