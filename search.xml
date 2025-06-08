@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>ysyx_report_20250608</title>
+      <link href="/2025/06/08/ysyx-report-20250608/"/>
+      <url>/2025/06/08/ysyx-report-20250608/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一生一芯组会汇报-分享"><a href="#一生一芯组会汇报-分享" class="headerlink" title="一生一芯组会汇报&#x2F;分享"></a>一生一芯组会汇报&#x2F;分享</h1><p>内蒙古大学-彭培智</p><p>ysyx_24080020</p><p>B阶段</p><p>2025.06.08</p><h1 id="近期进展"><a href="#近期进展" class="headerlink" title="近期进展"></a>近期进展</h1><ol><li>laser slam 融合RGBD<br> RGBD 转二维激光点， 配合已有的laser scan 输入到cartographer 建图<br> RGBD 通过VIO(视觉惯性里程计)，得到的位姿与轮式里程计的位姿融合，再输入到cartographer进行建图</li><li>修了lightsss 关闭时，子进程不被清理的bug<br> 在lightsss的析构函数中调用do_clear</li></ol><h1 id="卡了一段bug"><a href="#卡了一段bug" class="headerlink" title="卡了一段bug"></a>卡了一段bug</h1><p>无</p><h1 id="接下来的任务"><a href="#接下来的任务" class="headerlink" title="接下来的任务"></a>接下来的任务</h1><p>将icache 流水话</p><h1 id="DONE"><a href="#DONE" class="headerlink" title="DONE"></a>DONE</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> ysyx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+            <tag> verilog </tag>
+            
+            <tag> riscv32 </tag>
+            
+            <tag> makefile </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ysyx_report_20250525</title>
       <link href="/2025/05/25/ysyx-report-20250525/"/>
       <url>/2025/05/25/ysyx-report-20250525/</url>
